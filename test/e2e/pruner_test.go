@@ -202,8 +202,8 @@ func TestPruner(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if *cronjob.Spec.Suspend != true {
-		t.Errorf("The cronjob Spec.Suspend field should have been true, but was %v instead", *cronjob.Spec.Suspend)
+	if cronjob.Spec.Suspend == nil || !*cronjob.Spec.Suspend {
+		t.Errorf("The cronjob Spec.Suspend field should have been true, but was %v instead", cronjob.Spec.Suspend)
 	}
 
 	if cronjob.Spec.Schedule != "10 10 * * *" {
